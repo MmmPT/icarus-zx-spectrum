@@ -5,7 +5,7 @@
 ICARUS is an original score-chasing arcade game written in Z80 assembly for the ZX Spectrum 48K. Collect stars, avoid Zeus's attacks, build combos, face Zeus, Cronos and Medusa, and earn a place in the Top 5.
 
 [![Play page](https://img.shields.io/badge/GitHub%20Pages-Open%20game%20page-00ffff?style=for-the-badge&labelColor=111111)](https://mmmpt.github.io/icarus-zx-spectrum/)
-[![Download](https://img.shields.io/badge/Download-v1.0-ffff00?style=for-the-badge&labelColor=111111)](https://mmmpt.github.io/icarus-zx-spectrum/downloads/Icarus_ZX_Spectrum_v1.0.zip)
+[![Download](https://img.shields.io/badge/Download-v1.0-ffff00?style=for-the-badge&labelColor=111111)](https://github.com/MmmPT/icarus-zx-spectrum/releases/download/downloads-2026-10-31/Icarus_ZX_Spectrum_v1.0.zip)
 
 ![ICARUS loading screen](screenshots/01_Icarus_loading_screen.png)
 
@@ -32,7 +32,7 @@ ICARUS is an original score-chasing arcade game written in Z80 assembly for the 
 
 ## Download and play
 
-Download [`Icarus_ZX_Spectrum_v1.0.zip`](release/Icarus_ZX_Spectrum_v1.0.zip), extract it and load `Icarus.tap` in a real ZX Spectrum or a compatible emulator.
+Download [`Icarus_ZX_Spectrum_v1.0.zip`](https://github.com/MmmPT/icarus-zx-spectrum/releases/download/downloads-2026-10-31/Icarus_ZX_Spectrum_v1.0.zip), extract it and load `Icarus.tap` in a real ZX Spectrum or a compatible emulator.
 
 On a real machine:
 
@@ -101,3 +101,9 @@ Claude AI was used as a programming assistant during development. Design choices
 ## Licensing
 
 Source code in `src/` and `tools/` is released under the MIT License. The game title, loading artwork, screenshots, compiled binaries and other non-code assets remain © 2026 MMM and are not covered by the MIT License. See [`LICENSE`](LICENSE) and [`ASSET-LICENSE.md`](ASSET-LICENSE.md).
+
+## Download statistics
+
+[Download statistics](https://github.com/MmmPT/icarus-zx-spectrum/releases/tag/downloads-2026-10-31) are recorded by GitHub for the release assets from **31 October 2026**. The game page shows the total across the downloadable formats. This counts file downloads, not unique players; earlier direct downloads, repository clones and browser play are not included.
+
+Release assets are retained to preserve their counters. For a future game update, publish a new release or use new asset filenames rather than replacing an existing asset, then update the download links.
