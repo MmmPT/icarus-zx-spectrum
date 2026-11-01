@@ -1,0 +1,66 @@
+name: Publish ICARUS v1.2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-v1.2.yml'
+      - '.release_payload/v1.2/**'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - 'RELEASE_NOTES_v1.2.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-icarus-v1.2
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rebuild v1.2 TAP
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat .release_payload/v1.2/part*.b64 | tr -d '\n\r' | base64 --decode > Icarus_v1.2.tap
+          echo "62ff9ad8d0194f9125c1333f2c8335c17fef4aaa8cac1db2ce38e0d77e3d3b0c  Icarus_v1.2.tap" | sha256sum -c -
+
+      - name: Build v1.2 package
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p package/icarus-zx-spectrum-v1.2
+          cp Icarus_v1.2.tap package/icarus-zx-spectrum-v1.2/Icarus.tap
+          cp README.md CHANGELOG.md RELEASE_NOTES_v1.2.md package/icarus-zx-spectrum-v1.2/
+          (cd package && zip -r ../Icarus_ZX_Spectrum_v1.2.zip icarus-zx-spectrum-v1.2)
+
+      - name: Publish v1.2 without replacing v1.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="v1.2"
+          if ! gh release view "$tag" >/dev/null 2>&1; then
+            gh release create "$tag" \
+              --target "$GITHUB_SHA" \
+              --title "ICARUS v1.2" \
+              --notes-file RELEASE_NOTES_v1.2.md \
+              --latest
+          fi
+
+          for file in Icarus_v1.2.tap Icarus_ZX_Spectrum_v1.2.zip; do
+            name="$(basename "$file")"
+            if gh release view "$tag" --json assets --jq '.assets[].name' | grep -Fxq "$name"; then
+              echo "Keeping existing v1.2 asset: $name"
+            else
+              gh release upload "$tag" "$file"
+            fi
+          done
