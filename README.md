@@ -2,6 +2,10 @@
 
 > **Only the brave defy Zeus.**
 
+<p align="center">
+  <img src="docs/images/icarus-cover.jpg" alt="ICARUS cover artwork — Only the brave defy Zeus" width="512">
+</p>
+
 ICARUS is an original score-chasing arcade game written in Z80 assembly for the ZX Spectrum 48K and 128K. Catch falling stars, avoid divine attacks, build combos, face Zeus, Cronos and Medusa, and climb ever closer to the sun.
 
 [![Play page](https://img.shields.io/badge/GitHub%20Pages-Open%20game%20page-00ffff?style=for-the-badge&labelColor=111111)](https://mmmpt.github.io/icarus-zx-spectrum/)

@@ -129,3 +129,8 @@ footer .copyright { margin-top: 2rem; color: #777; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
 }
+
+/* Cover artwork keeps its original proportions and smooth detail. */
+.cover-art { margin: 0; }
+.cover-art img { width: 100%; height: auto; image-rendering: auto; }
+.cover-art::after { display: none; }
